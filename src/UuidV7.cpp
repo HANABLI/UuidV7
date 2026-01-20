@@ -212,4 +212,5 @@ namespace UuidV7
         return id;
     }
 
+    UuidV7::UuidV7::bytes_type UuidV7::GetBytes() const { return impl_->bytes_; }
 }  // namespace UuidV7

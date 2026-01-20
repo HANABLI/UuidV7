@@ -62,6 +62,11 @@ namespace UuidV7
          */
         static UuidV7 FromString(std::string_view s);
 
+        /**
+         * This method return the byte_type uuid
+         */
+        bytes_type GetBytes() const;
+
     private:
         struct Impl;
 
