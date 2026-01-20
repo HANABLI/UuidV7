@@ -7,7 +7,7 @@ namespace UuidV7
 {
     struct UuidV7::Impl
     {
-        bytes_type bytes_;
+        UuidV7::UuidV7::bytes_type bytes_;
 
         static std::mt19937_64::result_type seed_engine() {
             std::random_device rd;
@@ -43,7 +43,7 @@ namespace UuidV7
                     return false;
             }
 
-            bytes_type b{};
+            UuidV7::UuidV7::bytes_type b{};
             std::size_t bi = 0;  // byte index
             std::size_t i = 0;   // char index
 
@@ -91,7 +91,7 @@ namespace UuidV7
     }
 
     UuidV7 UuidV7::Generate() {
-        bytes_type b{};
+        UuidV7::UuidV7::bytes_type b{};
 
         // Get the curent time in milliseconds
         using clock = std::chrono::system_clock;
@@ -157,7 +157,7 @@ namespace UuidV7
         std::uint64_t node = r2 & 0x0000FFFFFFFFFFFFull;
 
         // --- 5. Write everything into bytes[] in network order (big-endian) ---
-        bytes_type out{};
+        UuidV7::UuidV7::bytes_type out{};
 
         // time_low (32 bits)
         out[0] = static_cast<std::uint8_t>((time_low >> 24) & 0xFFu);
