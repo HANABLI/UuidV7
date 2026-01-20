@@ -9,6 +9,7 @@
  * © copyright 2025 by Hatem Nabli
  */
 #include <memory>
+#include <cstdint>
 #include <random>
 #include <array>
 #include <chrono>
@@ -66,6 +67,12 @@ namespace UuidV7
          * This method return the byte_type uuid
          */
         bytes_type GetBytes() const;
+
+        /**
+         * Convert two bytes of the UUID into a uint16_t.
+         * By default returns the last two bytes as a big-endian uint16_t.
+         */
+        std::uint16_t ToUint16(std::size_t offset = 14) const;
 
     private:
         struct Impl;

@@ -213,4 +213,13 @@ namespace UuidV7
     }
 
     UuidV7::UuidV7::bytes_type UuidV7::GetBytes() const { return impl_->bytes_; }
+
+    std::uint16_t UuidV7::ToUint16(std::size_t offset) const {
+        const auto b = impl_->bytes_;
+        if (offset + 1 >= b.size())
+            throw std::out_of_range("UuidV7::ToUint16 offset out of range");
+        return static_cast<std::uint16_t>((static_cast<std::uint16_t>(b[offset]) << 8) |
+                                          static_cast<std::uint16_t>(b[offset + 1]));
+    }
+
 }  // namespace UuidV7
