@@ -203,11 +203,13 @@ namespace UuidV7
         return oss.str();
     }
 
-    UuidV7 UuidV7::FromStroring(std::string_view s) {
+    UuidV7 UuidV7::FromString(std::string_view s) {
         UuidV7 id;
+
         if (!Impl::try_parse(s, id))
-        { throw std::invalid_argument("invalid UUIDv7 string"); }
+            throw std::invalid_argument("invalid UUIDv7 string");
 
         return id;
     }
+
 }  // namespace UuidV7

@@ -55,7 +55,7 @@ namespace UuidV7
         /**
          * This method parse the given string uuid.
          */
-        static UuidV7 FromStroring(std::string_view s);
+        static UuidV7 FromString(std::string_view s);
 
     private:
         struct Impl;
