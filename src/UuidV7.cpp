@@ -76,8 +76,14 @@ namespace UuidV7
         }
     };
 
-    UuidV7::UuidV7() noexcept : impl_(new Impl) {}
-    UuidV7::UuidV7(const bytes_type& b) noexcept : impl_(new Impl) { impl_->bytes_ = b; }
+    UuidV7::UuidV7() noexcept : impl_(std::make_unique<Impl>()) {}
+    UuidV7::UuidV7(const bytes_type& b) noexcept : impl_(std::make_unique<Impl>()) {
+        impl_->bytes_ = b;
+    }
+
+    UuidV7::UuidV7(UuidV7&& other) noexcept : impl_(std::make_unique<Impl>()) {
+        impl_->bytes_ = std::move(other.GetBytes());
+    }
 
     bool UuidV7::operator==(const UuidV7& other) noexcept {
         return impl_->bytes_ == other.impl_->bytes_;
