@@ -13,6 +13,12 @@ set_target_properties(${this} PROPERTIES
     FOLDER Tests
 )
 
+if(MSVC)
+    target_compile_options(${this} PRIVATE /EHsc)
+else()
+    target_compile_options(${this} PRIVATE -fexceptions)
+endif()
+
 target_include_directories(${this} PRIVATE ..)
 target_link_libraries( ${this} PUBLIC
     gtest_main
