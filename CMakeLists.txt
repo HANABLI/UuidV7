@@ -17,10 +17,11 @@ set_target_properties(${this} PROPERTIES
     FOLDER Libraries
 )
 if(MSVC)
-    target_compile_options(${This} PRIVATE /EHsc)
+    target_compile_options(${this} PRIVATE /EHsc)
 else()
-    target_compile_options(${This} PRIVATE -fexceptions)
+    target_compile_options(${this} PRIVATE -fexceptions)
 endif()
+
 target_include_directories(${this} PUBLIC include)
 
 add_subdirectory(test)
