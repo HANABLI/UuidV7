@@ -75,7 +75,7 @@ namespace UuidV7
             return true;
         }
     };
-
+    UuidV7::~UuidV7() noexcept = default;
     UuidV7::UuidV7() noexcept : impl_(std::make_unique<Impl>()) {}
     UuidV7::UuidV7(const bytes_type& b) noexcept : impl_(std::make_unique<Impl>()) {
         impl_->bytes_ = b;
